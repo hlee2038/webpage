@@ -58,8 +58,6 @@ const precision = document.querySelector('#precision');
 const results = document.querySelector('#results');
 const error = document.querySelector('#error');
 const status = document.querySelector('#status');
-const lightTheme = document.querySelector('#light-theme');
-const darkTheme = document.querySelector('#dark-theme');
 const clearAmount = document.querySelector('#clear-amount');
 const historyList = document.querySelector('#history-list');
 const emptyHistory = document.querySelector('#empty-history');
@@ -293,12 +291,6 @@ function handleInput(event) {
   convert(true);
 }
 
-function applyTheme(dark) {
-  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-  lightTheme.setAttribute('aria-pressed', String(!dark));
-  darkTheme.setAttribute('aria-pressed', String(dark));
-}
-
 function clearInput() {
   clearTimeout(historyTimer);
   amount.value = previousInput = '';
@@ -325,15 +317,6 @@ clearHistory.addEventListener('click', () => {
   saveHistory();
   amount.focus();
 });
-lightTheme.addEventListener('click', () => {
-  applyTheme(false);
-  saveSetting('theme', 'light');
-});
-darkTheme.addEventListener('click', () => {
-  applyTheme(true);
-  saveSetting('theme', 'dark');
-});
 
-applyTheme(readSetting('theme') === 'dark');
 renderHistory();
 convert();
