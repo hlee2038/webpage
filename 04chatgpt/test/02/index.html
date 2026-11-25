@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PIZZA HOUSE | Artisan Pizza</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- 상단 브랜드 로고 -->
+    <header class="header">
+        <div class="brand">
+            <span class="brand-subtitle">Artisan Pizza</span>
+            <h1>PIZZA HOUSE</h1>
+        </div>
+
+        <div class="header-title">
+            CUSTOMIZE YOUR PIZZA
+        </div>
+
+        <div class="header-slogan">
+            The Premium Pizza
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- 피자 메뉴 6종 -->
+        <!-- JavaScript에서 메뉴를 자동으로 생성 -->
+        <section class="menu-section" aria-labelledby="menuTitle">
+
+            <div class="section-heading">
+                <span class="eyebrow">OUR SIGNATURE MENU</span>
+                <h2 id="menuTitle">피자 선택</h2>
+            </div>
+
+            <div class="pizza-menu" id="pizzaMenu"></div>
+
+        </section>
+
+
+        <!-- 메인 주문 영역 -->
+        <div class="order-layout">
+
+            <!-- 왼쪽: 선택한 피자 이미지 및 설명 -->
+            <section class="pizza-detail">
+
+                <div class="hero-image-wrap">
+                    <img id="mainPizzaImage" alt="선택한 피자">
+                </div>
+
+                <div class="pizza-description">
+                    <span class="signature">Signature Pizza</span>
+
+                    <h2 id="mainPizzaName"></h2>
+
+                    <p class="english-name" id="mainPizzaEnglish"></p>
+
+                    <div class="gold-line"></div>
+
+                    <p id="mainPizzaDescription"></p>
+                </div>
+
+            </section>
+
+
+            <!-- 중앙: 주문 옵션 -->
+            <section class="customization-panel" aria-label="주문 옵션">
+
+                <!-- 사이즈 -->
+                <fieldset class="option-section">
+
+                    <legend>
+                        <span class="option-number">01</span>
+                        사이즈 선택
+                    </legend>
+
+                    <div class="size-options">
+
+                        <label class="option-card">
+                            <input type="radio"
+                                   name="size"
+                                   value="M"
+                                   checked>
+
+                            <span class="option-content">
+                                <strong>M</strong>
+                                <span>Medium</span>
+                                <small>기본 가격</small>
+                            </span>
+                        </label>
+
+                        <label class="option-card">
+                            <input type="radio"
+                                   name="size"
+                                   value="L">
+
+                            <span class="option-content">
+                                <strong>L</strong>
+                                <span>Large</span>
+                                <small>+3,000원</small>
+                            </span>
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- 도우 -->
+                <fieldset class="option-section">
+
+                    <legend>
+                        <span class="option-number">02</span>
+                        도우 선택
+                    </legend>
+
+                    <!-- JavaScript에서 도우 옵션 생성 -->
+                    <div class="dough-options" id="doughOptions"></div>
+
+                </fieldset>
+
+
+                <!-- 추가 토핑 -->
+                <fieldset class="option-section">
+
+                    <legend>
+                        <span class="option-number">03</span>
+                        추가 토핑
+                        <small class="optional-text">복수 선택 가능</small>
+                    </legend>
+
+                    <!-- JavaScript에서 토핑 옵션 생성 -->
+                    <div class="topping-options" id="toppingOptions"></div>
+
+                </fieldset>
+
+
+                <!-- 수량 -->
+                <section class="quantity-section">
+
+                    <h3>
+                        <span class="option-number">04</span>
+                        주문 수량
+                    </h3>
+
+                    <div class="quantity-control">
+
+                        <button type="button"
+                                id="minusButton"
+                                aria-label="수량 감소">−</button>
+
+                        <span id="quantityDisplay" aria-live="polite">1</span>
+
+                        <button type="button"
+                                id="plusButton"
+                                aria-label="수량 증가">+</button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- 요청사항 -->
+                <section class="request-section">
+
+                    <label for="orderRequest">
+                        <span class="option-number">05</span>
+                        주문 요청사항
+                        <small class="optional-text">선택사항</small>
+                    </label>
+
+                    <textarea id="orderRequest"
+                              rows="3"
+                              placeholder="예: 피자를 8조각으로 잘라주세요."></textarea>
+
+                </section>
+
+            </section>
+
+
+            <!-- 오른쪽: 실시간 주문 내역 -->
+            <aside class="summary-panel">
+
+                <div class="summary-heading">
+                    <span class="eyebrow">YOUR ORDER</span>
+                    <h2>주문 내역</h2>
+                </div>
+
+                <div class="summary-product">
+
+                    <img id="summaryPizzaImage" alt="주문한 피자">
+
+                    <div>
+                        <h3 id="summaryPizzaName"></h3>
+                        <p id="summaryPizzaOptions"></p>
+                    </div>
+
+                </div>
+
+                <div class="selected-toppings">
+                    <span>추가 토핑</span>
+                    <p id="summaryToppings">없음</p>
+                </div>
+
+                <!-- 세부 가격 -->
+                <div class="price-details">
+
+                    <div class="price-row">
+                        <span>피자 기본 가격</span>
+                        <strong id="basePrice">0원</strong>
+                    </div>
+
+                    <div class="price-row">
+                        <span>사이즈 추가 금액</span>
+                        <strong id="sizePrice">0원</strong>
+                    </div>
+
+                    <div class="price-row">
+                        <span>도우 추가 금액</span>
+                        <strong id="doughPrice">0원</strong>
+                    </div>
+
+                    <div class="price-row">
+                        <span>토핑 추가 금액</span>
+                        <strong id="toppingPrice">0원</strong>
+                    </div>
+
+                </div>
+
+                <div class="subtotal-details">
+
+                    <div class="price-row">
+                        <span>피자 1판 가격</span>
+                        <strong id="unitPrice">0원</strong>
+                    </div>
+
+                    <div class="price-row">
+                        <span>주문 수량</span>
+                        <strong id="summaryQuantity">1판</strong>
+                    </div>
+
+                </div>
+
+                <div class="total-section" aria-live="polite">
+                    <span>총 주문 금액</span>
+                    <strong id="totalPrice">0원</strong>
+                </div>
+
+                <!-- 주문 및 초기화 버튼 -->
+                <div class="order-buttons">
+
+                    <button type="button"
+                            class="order-button"
+                            id="orderButton">
+                        주문하기
+                    </button>
+
+                    <button type="button"
+                            class="reset-button"
+                            id="resetButton">
+                        ↻ 선택 초기화
+                    </button>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- 주문 완료 팝업 -->
+    <dialog id="orderModal"
+            class="order-modal"
+            aria-labelledby="modalTitle">
+
+        <div class="modal-content">
+
+            <div class="complete-icon" aria-hidden="true">✓</div>
+
+            <span class="eyebrow">ORDER COMPLETE</span>
+
+            <h2 id="modalTitle">주문이 완료되었습니다!</h2>
+
+            <p class="modal-subtitle">
+                선택하신 주문 내역을 확인해 주세요.
+            </p>
+
+            <!-- JavaScript에서 주문 결과 표시 -->
+            <div id="modalOrderDetails" class="modal-order-details"></div>
+
+            <p class="demo-notice">
+                모의 주문입니다. 실제 주문 및 결제는 진행되지 않습니다.
+            </p>
+
+            <button type="button"
+                    id="closeModalButton"
+                    class="order-button">
+                닫기
+            </button>
+
+        </div>
+
+    </dialog>
+
+
+    <!-- 하단 브랜드 정보 -->
+    <footer class="footer">
+
+        <span class="footer-brand">PIZZA HOUSE</span>
+
+        <p>Artisan Pizza · Premium Taste</p>
+
+        <small>© PIZZA HOUSE. All rights reserved.</small>
+
+    </footer>
+
+</body>
+</html>

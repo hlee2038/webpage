@@ -1,0 +1,1323 @@
+
+/* ==========================================
+   우리들의 댕냥 다이어리
+   Pastel Scrapbook Design
+========================================== */
+
+/* 1. 디자인 색상 */
+
+:root {
+  --cream: #fff9f2;
+  --paper: #fffcf9;
+  --lavender: #e3d6f5;
+  --lavender-deep: #c5b0e2;
+  --pink: #ff8d91;
+  --pink-light: #ffe6e9;
+  --mint: #d8efdf;
+  --brown: #765148;
+  --text: #55413f;
+  --muted: #8c7f85;
+  --border: #e8dcef;
+}
+
+/* 2. 기본 설정 */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 24px 80px;
+
+  font-family:
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    "Trebuchet MS",
+    sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 8% 45%,
+      #ffece5 0,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 70%,
+      #f4eafe 0,
+      transparent 28%
+    ),
+    var(--cream);
+
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 배경의 체크무늬 종이 */
+
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 0;
+
+  background-color: #f0e2fa;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(166, 138, 201, 0.13) 50%,
+      transparent 50%
+    ),
+    linear-gradient(
+      rgba(166, 138, 201, 0.13) 50%,
+      transparent 50%
+    );
+
+  background-size: 34px 34px;
+}
+
+body::before {
+  top: -95px;
+  left: -100px;
+  transform: rotate(-12deg);
+  clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+}
+
+body::after {
+  bottom: -90px;
+  right: -130px;
+  transform: rotate(22deg);
+
+  background-color: #ffe7ed;
+
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+textarea:focus-visible,
+.photo-viewport:focus-visible {
+  outline: 3px solid #a787d4;
+  outline-offset: 4px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.svg-definitions {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* 3. 배경 발바닥 장식 */
+
+.background-paw {
+  position: absolute;
+  z-index: 0;
+  color: #e6cfee;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.background-paw svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.paw-one {
+  left: 3%;
+  top: 43%;
+  width: 52px;
+  height: 52px;
+  transform: rotate(-24deg);
+}
+
+.paw-two {
+  right: 4%;
+  top: 18%;
+  width: 39px;
+  height: 39px;
+  transform: rotate(20deg);
+}
+
+.paw-three {
+  right: 2%;
+  bottom: 13%;
+  width: 62px;
+  height: 62px;
+  color: #f3c5ce;
+  transform: rotate(-14deg);
+}
+
+/* 4. 페이지 헤더 */
+
+.site-header {
+  width: min(100%, 1100px);
+  margin: 0 auto 30px;
+
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr) 155px;
+  align-items: end;
+  gap: 12px;
+
+  position: relative;
+  z-index: 1;
+}
+
+.site-identity {
+  text-align: center;
+}
+
+.title-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-identity h1 {
+  margin: 0;
+  color: var(--brown);
+
+  font-size: clamp(27px, 4.1vw, 50px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+.title-paw {
+  width: 35px;
+  height: 35px;
+  fill: var(--pink);
+  flex-shrink: 0;
+}
+
+.account-name {
+  display: inline-block;
+  margin: 10px 0 6px;
+  padding: 5px 17px;
+
+  border-radius: 100px;
+  background: #efe2f7;
+
+  color: #654d65;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.site-description {
+  margin: 7px 0 0;
+  font-size: clamp(13px, 1.8vw, 19px);
+  font-weight: 650;
+  letter-spacing: -0.4px;
+  color: #867783;
+  word-break: keep-all;
+}
+
+.description-heart {
+  color: var(--pink);
+  font-size: 20px;
+}
+
+.header-mascot {
+  display: block;
+  width: 100%;
+  max-width: 155px;
+  height: auto;
+  overflow: visible;
+}
+
+.mascot-dog {
+  justify-self: end;
+  transform: translateY(17px);
+}
+
+.mascot-cat {
+  justify-self: start;
+  transform: translateY(17px);
+}
+
+/* 5. 다이어리 프레임 */
+
+.diary-shell {
+  position: relative;
+  z-index: 1;
+
+  width: min(100%, 1170px);
+  margin: 0 auto;
+
+  padding: 11px;
+
+  border-radius: 43px;
+  background: #dfd0f3;
+
+  box-shadow:
+    0 16px 0 rgba(192, 165, 226, 0.24),
+    0 24px 45px rgba(106, 77, 116, 0.13);
+}
+
+.diary-shell::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.58);
+  border-radius: 38px;
+  pointer-events: none;
+}
+
+.diary-paper {
+  position: relative;
+  padding: 38px 46px 32px;
+  border-radius: 33px;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(194, 174, 156, 0.018),
+      rgba(194, 174, 156, 0.018) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    var(--paper);
+
+  border: 1px solid #f1e7e8;
+
+  box-shadow:
+    inset 0 0 23px rgba(217, 192, 178, 0.1),
+    0 4px 15px rgba(115, 87, 100, 0.06);
+}
+
+/* 바인더 고리 */
+
+.binding-rings {
+  position: absolute;
+  top: -22px;
+  left: 12%;
+  right: 12%;
+
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.binding-rings span {
+  width: 17px;
+  height: 38px;
+
+  border-radius: 100px;
+  background: linear-gradient(
+    90deg,
+    #bda8da,
+    #e6dafa 45%,
+    #ba9fd8
+  );
+
+  box-shadow:
+    1px 2px 3px rgba(106, 77, 116, 0.2),
+    inset 1px 0 2px rgba(255, 255, 255, 0.65);
+}
+
+/* 6. 반려동물 프로필 */
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 19px;
+}
+
+.pet-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+
+.pet-avatar {
+  flex-shrink: 0;
+  width: 77px;
+  height: 77px;
+
+  padding: 4px;
+  border-radius: 50%;
+  background: #f8dce9;
+  border: 2px solid #f5bfc9;
+
+  box-shadow: 0 3px 9px rgba(170, 112, 139, 0.12);
+}
+
+.pet-avatar svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.pet-information h2 {
+  margin: 0 0 4px;
+  color: #49332f;
+  font-size: 27px;
+  font-weight: 850;
+}
+
+.name-heart {
+  color: var(--pink);
+  font-size: 23px;
+}
+
+.pet-information p {
+  display: inline-block;
+  margin: 0;
+  padding: 5px 11px;
+  border-radius: 20px;
+  background: #f1e5f7;
+  font-size: 15px;
+  font-weight: 600;
+  color: #775b70;
+}
+
+.post-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: #ffe6e9;
+
+  font-size: 16px;
+  color: #8b655e;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.post-date .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 7. 폴라로이드 사진 프레임 */
+
+.photo-section {
+  position: relative;
+}
+
+.polaroid-frame {
+  position: relative;
+
+  padding: 13px 13px 25px;
+  border-radius: 34px;
+  background: #fff;
+
+  border: 1px solid #efe4e6;
+
+  box-shadow:
+    0 6px 8px rgba(113, 88, 104, 0.08),
+    0 12px 24px rgba(113, 88, 104, 0.10);
+}
+
+.photo-viewport {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 2.15 / 1;
+  min-height: 310px;
+
+  border-radius: 25px;
+  background: #f6e7df;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 슬라이드 각각의 영역 */
+
+.photo-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.photo-slide img {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  opacity: 0;
+}
+
+.photo-slide img.is-loaded {
+  opacity: 1;
+}
+
+/* 사진 미등록 시 표시되는 배경 */
+
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  background:
+    radial-gradient(
+      circle at 25% 30%,
+      rgba(255, 255, 255, 0.65),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #f7e3e7,
+      #eee2f6 55%,
+      #fbe6d4
+    );
+
+  color: #856c83;
+  text-align: center;
+}
+
+.photo-slide[data-slide="1"] .photo-placeholder {
+  background: linear-gradient(
+    135deg,
+    #e2f0e5,
+    #f6e7f3,
+    #fce6e0
+  );
+}
+
+.photo-slide[data-slide="2"] .photo-placeholder {
+  background: linear-gradient(
+    135deg,
+    #f8edda,
+    #eadcf5,
+    #fbe5ee
+  );
+}
+
+.placeholder-paw {
+  display: block;
+  width: 74px;
+  height: 74px;
+  fill: #c9b1d9;
+  opacity: 0.8;
+}
+
+.photo-placeholder span {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.photo-placeholder small {
+  font-size: 13px;
+  color: #958494;
+}
+
+/* 사진 전환 화살표 */
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+
+  display: grid;
+  place-items: center;
+
+  width: 52px;
+  height: 52px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.91);
+  color: #73544d;
+
+  box-shadow: 0 3px 12px rgba(80, 61, 72, 0.15);
+
+  transform: translateY(-50%);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  background: #fff;
+  box-shadow: 0 5px 16px rgba(80, 61, 72, 0.22);
+}
+
+.carousel-arrow .icon {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2.6;
+}
+
+.arrow-prev {
+  left: 19px;
+}
+
+.arrow-next {
+  right: 19px;
+}
+
+/* 사진 위치 점 3개 */
+
+.carousel-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 11px;
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.82);
+
+  transform: translateX(-50%);
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  background: #cbbbd9;
+  transition: background 0.2s ease;
+}
+
+.carousel-dot.active {
+  background: var(--pink);
+}
+
+/* 8. 마스킹테이프 */
+
+.washi-tape {
+  position: absolute;
+  z-index: 6;
+
+  width: 112px;
+  height: 38px;
+
+  opacity: 0.91;
+  pointer-events: none;
+
+  box-shadow: 0 2px 5px rgba(90, 70, 90, 0.08);
+}
+
+.tape-left {
+  left: -26px;
+  top: 18px;
+
+  transform: rotate(-30deg);
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 15px,
+      rgba(255, 255, 255, 0.4) 15px 19px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #ffe1a2 0 15px,
+      #fff1c9 15px 30px
+    );
+}
+
+.tape-right {
+  right: -21px;
+  bottom: 32px;
+
+  transform: rotate(-33deg);
+
+  background-color: #b8dced;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.82) 28%,
+      transparent 32%
+    );
+
+  background-size: 20px 20px;
+}
+
+/* 9. 좋아요 및 게시글 */
+
+.post-content {
+  margin-top: 24px;
+}
+
+.post-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+}
+
+.like-button {
+  display: grid;
+  place-items: center;
+
+  width: 49px;
+  height: 49px;
+  padding: 5px;
+
+  border: none;
+  background: transparent;
+  color: #8a625a;
+
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.like-button .heart-icon {
+  width: 39px;
+  height: 39px;
+  fill: transparent;
+
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease;
+}
+
+.like-button:hover {
+  color: #ee7f86;
+}
+
+.like-button.is-liked {
+  color: #f16b79;
+}
+
+.like-button.is-liked .heart-icon {
+  fill: #f16b79;
+  stroke: #f16b79;
+}
+
+.comment-icon {
+  width: 39px;
+  height: 39px;
+  margin: 5px 0;
+
+  flex-shrink: 0;
+  color: #8a625a;
+}
+
+.action-divider {
+  width: 1px;
+  height: 60px;
+  margin: 0 14px;
+
+  flex-shrink: 0;
+  background: #e6d9e7;
+}
+
+.post-caption {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-caption p {
+  margin: 2px 0 12px;
+
+  color: #4f3834;
+  font-size: 23px;
+  font-weight: 850;
+  letter-spacing: -0.7px;
+}
+
+.hashtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hashtags span {
+  padding: 7px 14px;
+  border-radius: 100px;
+
+  color: #6a5b9e;
+  background: #f0e7f8;
+
+  font-size: 15px;
+  font-weight: 750;
+}
+
+/* 10. 댓글 입력 영역 */
+
+.comment-section {
+  margin-top: 27px;
+  padding-top: 24px;
+  border-top: 2px dashed #ddd0e8;
+}
+
+.comment-compose {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+
+  min-height: 70px;
+  padding: 8px 10px 8px 19px;
+
+  border: 2px solid #d8c9e7;
+  border-radius: 22px;
+
+  background: #fcf8fd;
+}
+
+.pencil-icon {
+  width: 24px;
+  height: 24px;
+  color: #998b9d;
+}
+
+.comment-compose textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+
+  padding: 10px 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: var(--text);
+
+  resize: vertical;
+
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.comment-compose textarea::placeholder {
+  color: #9f93a1;
+}
+
+.comment-compose textarea:focus-visible {
+  outline: none;
+}
+
+.comment-compose:focus-within {
+  border-color: #b99bd8;
+  box-shadow: 0 0 0 3px rgba(207, 186, 232, 0.25);
+}
+
+.character-count {
+  min-width: 38px;
+  color: #938796;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.comment-submit {
+  min-height: 48px;
+  padding: 11px 24px;
+
+  border: none;
+  border-radius: 18px;
+
+  color: white;
+  background: var(--pink);
+
+  font-size: 16px;
+  font-weight: 800;
+  white-space: nowrap;
+
+  transition: background 0.2s ease;
+}
+
+.comment-submit:hover {
+  background: #f37880;
+}
+
+/* 11. 다이어리 장식 스티커 */
+
+.sticker {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.sticker-paw {
+  left: -31px;
+  bottom: 85px;
+
+  display: grid;
+  place-items: center;
+
+  width: 69px;
+  height: 69px;
+  border-radius: 50%;
+
+  background: #fff6e9;
+  box-shadow: 0 4px 8px rgba(116, 82, 100, 0.13);
+
+  transform: rotate(-12deg);
+}
+
+.sticker-paw svg {
+  width: 47px;
+  height: 47px;
+  fill: #f5a0ad;
+}
+
+.sticker-bone {
+  right: -28px;
+  bottom: 75px;
+
+  width: 77px;
+  height: 77px;
+
+  transform: rotate(25deg);
+}
+
+.sticker-bone svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 4px rgba(130, 97, 64, 0.14));
+}
+
+/* 12. 댓글 등록 안내 팝업 */
+
+.notice-dialog {
+  width: min(90vw, 390px);
+  max-width: none;
+
+  padding: 32px 25px 26px;
+  border: 3px solid #d7c3ec;
+  border-radius: 28px;
+
+  background: var(--paper);
+  color: var(--text);
+
+  text-align: center;
+
+  box-shadow: 0 15px 45px rgba(74, 48, 83, 0.18);
+}
+
+.notice-dialog::backdrop {
+  background: rgba(58, 43, 61, 0.45);
+}
+
+.notice-decoration {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.notice-dialog h2 {
+  margin: 0 0 13px;
+  font-size: 24px;
+  color: var(--brown);
+}
+
+.notice-dialog p {
+  margin: 0 0 25px;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.notice-close {
+  min-width: 120px;
+  padding: 12px 22px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: var(--pink);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.notice-close:hover {
+  background: #f37880;
+}
+
+/* 13. 태블릿 화면 */
+
+@media (max-width: 900px) {
+
+  .site-header {
+    grid-template-columns: 105px minmax(0, 1fr) 105px;
+  }
+
+  .diary-paper {
+    padding: 34px 26px 28px;
+  }
+
+  .photo-viewport {
+    aspect-ratio: 1.8 / 1;
+  }
+
+  .post-caption p {
+    font-size: 21px;
+  }
+
+}
+
+/* 14. 모바일 화면 */
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 26px 11px 55px;
+  }
+
+  .site-header {
+    grid-template-columns: 63px minmax(0, 1fr) 63px;
+    gap: 2px;
+    margin-bottom: 25px;
+  }
+
+  .site-identity h1 {
+    font-size: clamp(21px, 5.5vw, 30px);
+    letter-spacing: -1.4px;
+  }
+
+  .title-row {
+    gap: 4px;
+  }
+
+  .title-paw {
+    width: 21px;
+    height: 21px;
+  }
+
+  .header-mascot {
+    max-width: 72px;
+  }
+
+  .mascot-dog,
+  .mascot-cat {
+    transform: translateY(10px);
+  }
+
+  .account-name {
+    margin-top: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  .site-description {
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .description-heart {
+    font-size: 14px;
+  }
+
+  .diary-shell {
+    padding: 6px;
+    border-radius: 27px;
+  }
+
+  .diary-shell::before {
+    inset: 3px;
+    border-radius: 24px;
+  }
+
+  .diary-paper {
+    padding: 30px 15px 24px;
+    border-radius: 21px;
+  }
+
+  .binding-rings {
+    top: -15px;
+  }
+
+  .binding-rings span {
+    width: 12px;
+    height: 27px;
+  }
+
+  .post-header {
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .pet-profile {
+    gap: 9px;
+  }
+
+  .pet-avatar {
+    width: 57px;
+    height: 57px;
+  }
+
+  .pet-information h2 {
+    font-size: 21px;
+  }
+
+  .name-heart {
+    font-size: 18px;
+  }
+
+  .pet-information p {
+    padding: 4px 7px;
+    font-size: 11px;
+  }
+
+  .post-date {
+    padding: 6px 8px;
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .post-date .icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .polaroid-frame {
+    padding: 8px 8px 17px;
+    border-radius: 23px;
+  }
+
+  .photo-viewport {
+    min-height: 240px;
+    aspect-ratio: 1.25 / 1;
+    border-radius: 17px;
+  }
+
+  .photo-placeholder span {
+    font-size: 20px;
+  }
+
+  .placeholder-paw {
+    width: 53px;
+    height: 53px;
+  }
+
+  .carousel-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .carousel-arrow .icon {
+    width: 23px;
+    height: 23px;
+  }
+
+  .arrow-prev {
+    left: 9px;
+  }
+
+  .arrow-next {
+    right: 9px;
+  }
+
+  .carousel-dots {
+    gap: 8px;
+    padding: 6px 12px;
+    bottom: 8px;
+  }
+
+  .carousel-dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .washi-tape {
+    width: 67px;
+    height: 25px;
+  }
+
+  .tape-left {
+    left: -13px;
+    top: 9px;
+  }
+
+  .tape-right {
+    right: -13px;
+    bottom: 18px;
+  }
+
+  .post-content {
+    margin-top: 19px;
+  }
+
+  .post-actions {
+    display: grid;
+    grid-template-columns: 45px 45px 1fr;
+    align-items: center;
+    gap: 5px 10px;
+  }
+
+  .like-button {
+    width: 43px;
+    height: 43px;
+  }
+
+  .like-button .heart-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .comment-icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .action-divider {
+    display: none;
+  }
+
+  .post-caption {
+    grid-column: 1 / -1;
+    margin-top: 9px;
+  }
+
+  .post-caption p {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .hashtags span {
+    padding: 6px 11px;
+    font-size: 13px;
+  }
+
+  .comment-section {
+    margin-top: 21px;
+    padding-top: 18px;
+  }
+
+  .comment-compose {
+    grid-template-columns: 24px minmax(0, 1fr) auto;
+    gap: 8px;
+
+    padding: 11px 12px;
+    border-radius: 17px;
+  }
+
+  .pencil-icon {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .comment-compose textarea {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 14px;
+  }
+
+  .character-count {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 13px;
+  }
+
+  .comment-submit {
+    grid-column: 2 / 4;
+    grid-row: 2;
+    justify-self: end;
+
+    min-height: 41px;
+    padding: 9px 17px;
+    border-radius: 13px;
+    font-size: 14px;
+  }
+
+  .sticker-paw {
+    width: 42px;
+    height: 42px;
+    left: -15px;
+    bottom: 80px;
+  }
+
+  .sticker-paw svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .sticker-bone {
+    width: 45px;
+    height: 45px;
+    right: -16px;
+    bottom: 70px;
+  }
+
+  .background-paw {
+    opacity: 0.3;
+  }
+
+}
+
+/* 15. 움직임 최소화 설정 */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+}

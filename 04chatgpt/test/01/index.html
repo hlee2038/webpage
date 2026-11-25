@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7F3E9">
+  <meta name="description" content="다재다능 알모경 도경수 - 나만의 작은 팬 아카이브">
+  <title>My Little Archive | 알.모.경.♡ </title>
+  <!-- 웹폰트: 인터넷 연결이 없을 때는 대체 폰트가 적용됩니다. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* 01. 색상과 기본 스타일 */
+    :root {
+      --ivory:#F7F3E9; --paper:#FFFCF6; --sage:#D9DCC5;
+      --olive:#858D59; --dark-olive:#414B3D; --beige:#C5A68C;
+      --ink:#343B32; --muted:#777D6C; --border:#CFCDBA;
+      --font-kr:"Noto Serif KR",Georgia,serif;
+      --font-en:Georgia,"Times New Roman",serif;
+      --font-script:"Caveat",cursive;
+      --font-hand:"Nanum Pen Script",cursive;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:110px}
+    body{
+      margin:0;color:var(--ink);font-family:var(--font-kr);
+      background-color:var(--ivory);
+      background-image:
+        radial-gradient(circle at 18% 25%,rgba(255,255,255,.7),transparent 42%),
+        radial-gradient(circle at 85% 70%,rgba(187,174,143,.12),transparent 45%),
+        repeating-linear-gradient(0deg,rgba(103,91,66,.014) 0px,rgba(103,91,66,.014) 1px,transparent 1px,transparent 4px);
+    }
+    a{color:inherit;text-decoration:none} img{display:block;max-width:100%} svg{display:block}
+    ::selection{background:var(--sage);color:var(--dark-olive)}
+    .page{width:min(1500px,94%);margin:0 auto}
+
+    /* 02. 상단 내비게이션 */
+    .site-header{background:rgba(247,243,233,.96);border-bottom:1px solid #B9BBA3;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+    .header-inner{min-height:79px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .site-logo{display:flex;align-items:center;gap:15px;white-space:nowrap}
+    .logo-leaf{width:58px;height:49px;color:var(--olive);flex-shrink:0}
+    .site-logo__text{font-size:clamp(19px,2vw,30px);letter-spacing:-.06em;font-weight:500}
+    .site-logo__text strong{font-size:1.25em;font-weight:600}
+    .nav{display:flex;align-items:center;font-family:var(--font-en);font-size:15px;white-space:nowrap}
+    .nav-link{position:relative;display:inline-block;padding:12px 24px;transition:color .2s}
+    .nav-link+.nav-link::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:15px;width:1px;background:#A9AA91}
+    .nav-link::after{content:"";position:absolute;bottom:5px;left:24px;right:24px;height:2px;background:var(--olive);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+    .nav-link:hover,.nav-link.active{color:var(--dark-olive)}
+    .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+    a:focus-visible{outline:2px solid var(--olive);outline-offset:5px;border-radius:2px}
+
+    /* 03. 메인 사진 및 타이틀 */
+    .hero-wrap{padding-top:18px;position:relative}
+    .hero{position:relative;height:clamp(400px,32vw,505px);background:#19251A;overflow:hidden;isolation:isolate}
+    .hero-photo{
+      position:absolute;left:0;top:0;width:82%;height:100%;object-fit:cover;object-position:50% 43%;
+      -webkit-mask-image:linear-gradient(to right,black 0%,black 67%,transparent 100%);
+      mask-image:linear-gradient(to right,black 0%,black 67%,transparent 100%);
+    }
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 32%,rgba(17,29,17,.05) 52%,rgba(17,29,17,.52) 72%,rgba(17,29,17,.5) 100%);pointer-events:none;z-index:1}
+    .hero-fallback{position:absolute;inset:0;display:grid;place-items:center;background:#29392A;color:#F4F0E5;padding:24px;font-size:14px;text-align:center}
+    .hero-fallback[hidden]{display:none}
+    .hero-copy{position:absolute;right:3.4%;top:16%;width:32%;z-index:5;text-align:center;color:#F9F6EE}
+    .hero-eyebrow{font-family:var(--font-en);font-size:clamp(10px,1vw,15px);letter-spacing:.42em;margin:0 0 12px}
+    .hero-name{font-family:var(--font-script);font-weight:400;font-size:clamp(65px,6.3vw,112px);line-height:1;letter-spacing:-.035em;white-space:nowrap;margin:0 0 47px;transform:rotate(-5deg);text-shadow:0 2px 12px rgba(0,0,0,.08)}
+    .hero-name::after{content:"";display:block;height:1px;width:78%;margin:-3px auto 0;background:rgba(255,255,255,.75);transform:rotate(-3deg)}
+    .paper-note{
+      position:relative;width:min(100%,425px);margin:0 auto;padding:22px 12px 15px;color:#39472C;
+      background-color:#F2ECDD;
+      background-image:linear-gradient(rgba(131,129,108,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(131,129,108,.10) 1px,transparent 1px);
+      background-size:22px 22px;
+      clip-path:polygon(0 3%,8% 1%,15% 3%,22% 0,33% 2%,44% 0,56% 3%,66% 1%,78% 3%,90% 1%,100% 3%,99% 97%,90% 99%,79% 97%,67% 100%,54% 97%,42% 100%,30% 98%,17% 100%,8% 97%,1% 99%);
+      transform:rotate(-3deg);box-shadow:0 8px 20px rgba(0,0,0,.08);
+    }
+    .paper-note::before{content:"";position:absolute;top:0;left:37%;width:26%;height:19px;background:rgba(164,176,135,.72);transform:translateY(-1px) rotate(2deg)}
+    .paper-note p{font-family:var(--font-hand);font-size:clamp(26px,2.6vw,41px);margin:0;line-height:1.4;white-space:nowrap}
+    .hero-flowers{position:absolute;z-index:4;width:170px;left:-42px;top:20%;transform:rotate(-8deg);pointer-events:none}
+    .flower-stems{fill:none;stroke:#A4AB7F;stroke-width:2;stroke-linecap:round}
+    .flower-petals{fill:#F7F5E9;stroke:rgba(185,177,138,.5);stroke-width:.7}
+    .flower-center{fill:#CABF88}
+    .torn-edge{position:absolute;z-index:3;left:-2px;bottom:-2px;width:19%;height:90px;background:var(--ivory);clip-path:polygon(0 0,11% 22%,18% 28%,30% 42%,36% 58%,49% 70%,60% 80%,76% 87%,100% 100%,0 100%);pointer-events:none}
+
+    /* 04. 세 개 콘텐츠 카드 */
+    .archive-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:29px 0 70px;align-items:stretch}
+    .archive-card{position:relative;min-width:0;min-height:385px;background:rgba(255,252,246,.7);border:1px solid var(--border);border-radius:14px;padding:27px 30px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;scroll-margin-top:110px}
+    .archive-card:hover{transform:translateY(-5px);box-shadow:0 12px 26px rgba(65,75,61,.08);border-color:#ABB18F}
+    .card-header{display:flex;position:relative;align-items:flex-start;gap:18px;min-height:73px;padding-bottom:19px;border-bottom:1px solid #B8B9A0}
+    .card-number{font-family:var(--font-en);font-style:italic;font-size:clamp(45px,4vw,62px);line-height:1;color:var(--olive);letter-spacing:-.055em}
+    .card-title{font-family:var(--font-en);font-size:clamp(18px,1.6vw,23px);font-weight:400;line-height:1.25;letter-spacing:-.025em;margin:5px 0 0}
+    .card-icon{position:absolute;right:0;top:0;width:58px;height:58px;color:#838C60}
+    .card-content{position:relative;z-index:2;padding-top:17px}
+    .card-entry{position:relative;padding-left:29px;margin-bottom:20px}
+    .card-entry::before{content:"✦";position:absolute;left:0;top:-3px;font-size:22px;color:var(--olive)}
+    .card-entry h3{margin:0 0 7px;font-size:clamp(15px,1.3vw,19px);line-height:1.5;font-weight:700;word-break:keep-all}
+    .card-entry p{margin:0;font-size:clamp(13px,1.1vw,16px);line-height:1.85;color:#3E433A;overflow-wrap:break-word;word-break:keep-all}
+    .card-leaf{position:absolute;right:0;top:-5px;width:67px;height:67px;color:#8B946C}
+
+    /* 05. 스크랩북 장식 */
+    .mini-polaroid{position:absolute;width:185px;height:156px;right:23px;bottom:-45px;background:#F8F5E9;padding:10px 10px 33px;transform:rotate(-10deg);box-shadow:0 5px 17px rgba(44,48,37,.15);z-index:1;pointer-events:none}
+    .mini-polaroid::before{content:"";position:absolute;top:-10px;left:60px;width:66px;height:22px;background:rgba(201,196,164,.7);transform:rotate(3deg);z-index:2}
+    .polaroid-art{width:100%;height:100%;background:#D4DAC5;overflow:hidden}
+    .vinyl{position:absolute;width:245px;height:245px;border-radius:50%;right:-91px;bottom:-97px;background:radial-gradient(circle at center,#ADAE85 0 13%,#58644A 13% 18%,transparent 18% 19%,#4C5942 19% 100%);box-shadow:-8px -5px 20px rgba(50,60,43,.12);z-index:1;pointer-events:none}
+    .vinyl::before{content:"";position:absolute;inset:11px;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0 6px,rgba(223,224,191,.12) 7px,transparent 8px)}
+    .vinyl::after{content:"";position:absolute;width:13px;height:13px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#E8E6D5}
+    .card-favorite .card-content{max-width:100%}
+    .site-footer{border-top:1px solid var(--border);padding:25px 0 38px;text-align:center}
+    .footer-text{font-family:var(--font-en);font-size:11px;letter-spacing:.35em;color:#848C6E}
+
+    /* 06. 태블릿 및 모바일 반응형 */
+    @media(max-width:1100px){
+      .header-inner{flex-wrap:wrap;justify-content:center;gap:0;padding:12px 0}
+      .nav{justify-content:center;width:100%}
+      .hero{height:440px}.hero-copy{right:3%;width:36%}.hero-name{font-size:clamp(56px,7vw,82px)}
+      .archive-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card-favorite{grid-column:1/-1}
+      .archive-card{min-height:330px}.card-number{font-size:54px}
+    }
+    @media(max-width:700px){
+      html{scroll-padding-top:130px}.page{width:92%}.header-inner{min-height:auto;gap:8px;padding:13px 0}
+      .site-logo__text{font-size:20px}.logo-leaf{width:33px;height:37px}
+      .nav{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;font-size:12px;-webkit-overflow-scrolling:touch}
+      .nav::-webkit-scrollbar{display:none}.nav-link{padding:9px 13px}.nav-link::after{left:13px;right:13px}
+      .hero-wrap{padding-top:12px}.hero{height:600px}
+      .hero-photo{width:100%;height:63%;object-fit:contain;object-position:center top;-webkit-mask-image:linear-gradient(to bottom,black 0%,black 78%,transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black 78%,transparent 100%)}
+      .hero::after{background:linear-gradient(to bottom,transparent 10%,rgba(17,29,17,.05) 38%,#19251A 70%)}
+      .hero-copy{top:auto;right:5%;bottom:30px;width:90%}.hero-eyebrow{font-size:10px;letter-spacing:.3em}
+      .hero-name{font-size:clamp(60px,13vw,84px);margin-bottom:29px}.paper-note{max-width:330px;padding:18px 8px 11px}.paper-note p{font-size:clamp(26px,6vw,34px)}
+      .hero-flowers{width:100px;left:-20px;top:22%}.torn-edge{display:none}
+      .archive-cards{grid-template-columns:1fr;gap:16px;padding:20px 0 45px}
+      .archive-card,.card-favorite{grid-column:auto;min-height:285px;scroll-margin-top:130px}
+      .card-about{min-height:420px}.card-header{gap:20px}.card-number{font-size:49px}.card-title{font-size:21px}
+      .card-entry h3{font-size:16px}.card-entry p{font-size:14px}
+      .card-why{min-height:300px}.card-favorite{min-height:290px}
+      .vinyl{width:190px;height:190px;right:-66px;bottom:-76px}.footer-text{font-size:9px;letter-spacing:.2em}
+    }
+    @media(max-width:380px){.site-logo__text{font-size:17px}.hero{height:535px}.hero-name{font-size:58px}.archive-card{padding:22px 20px}.card-title{font-size:18px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="page header-inner">
+
+      <a class="site-logo" href="#home" aria-label="홈으로 이동">
+        <img src="images/leaf01.png">
+        <span class="site-logo__text">다재다능 알모경 <strong>도경수</strong></span>
+      </a>
+
+      <nav class="nav" aria-label="메인 메뉴">
+        <a class="nav-link active" href="#home" aria-current="location">HOME</a>
+        <a class="nav-link" href="#about">01 ABOUT</a>
+        <a class="nav-link" href="#why">02 WHY D.O.</a>
+        <a class="nav-link" href="#favorites">03 MY FAVORITES</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- HERO: 아래 src의 이미지 파일명만 변경하면 사진을 교체할 수 있습니다. -->
+    <section class="hero-wrap" id="home" aria-label="메인 소개">
+      <div>
+        <img src="images/hero.jpg">
+      </div>
+    </section>
+
+    <!-- 01~03 콘텐츠: 아래 문구를 수정하면 카드에 반영됩니다. -->
+    <div class="archive-cards">
+      <!-- 01. ABOUT MY LITTLE ARCHIVE -->
+      <article class="archive-card card-about" id="about">
+        <div class="card-header">
+          <span class="card-number">01.</span>
+          <h2 class="card-title">ABOUT<br>MY LITTLE ARCHIVE</h2>
+          <svg class="card-leaf" viewBox="0 0 80 80" fill="none" aria-hidden="true"><path d="M7 70Q35 44 67 12" stroke="currentColor" stroke-width="1.6"/><g fill="currentColor" opacity=".72"><path d="M23 56C10 57 8 48 11 43C21 43 27 48 23 56Z"/><path d="M34 44C22 41 23 31 27 27C36 32 38 38 34 44Z"/><path d="M46 32C35 25 39 17 44 14C51 20 51 26 46 32Z"/><path d="M25 53C37 55 44 48 44 40C33 41 27 46 25 53Z"/><path d="M46 31C60 33 67 24 65 17C55 18 48 24 46 31Z"/></g></svg>
+        </div>
+        <div class="card-content">
+          <div class="card-entry"><h3>도경수를 좋아하게 된 계기</h3><p>더 시즌즈-지코의 아티스트</p></div>
+          <div class="card-entry"><h3>도경수를 좋아하는 가장 큰 이유</h3><p>감미로운 목소리, 대단한 보컬, 덤덤한 성격, 성실함</p></div>
+          <div class="card-entry"><h3>나에게 도경수란?</h3><p>처음으로 좋아하게 된 아이돌</p></div>
+        </div>
+      </article>
+
+      <!-- 02. WHY D.O.? -->
+      <article class="archive-card card-why" id="why">
+        <div class="card-header">
+          <span class="card-number">02.</span>
+          <h2 class="card-title">WHY D.O.?</h2>
+          <svg class="card-icon" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="25" width="61" height="40" rx="4"/><path d="M22 25L27 17H47L52 25"/><path d="M54 21H65V25"/><circle cx="41" cy="45" r="15"/><circle cx="41" cy="45" r="10"/><circle cx="41" cy="45" r="5"/><rect x="15" y="31" width="11" height="5" rx="1"/><path d="M12 60H70"/></svg>
+        </div>
+        <div class="card-content">
+          <div class="card-entry"><h3>가수 도경수의 매력</h3><p>노래, 예능감, 연기력, 잘생긴 비주얼, 귀여움,<br>(그 자체 있는 그대로)</p></div>
+        </div>
+        <div class="mini-polaroid" aria-hidden="true"><div class="polaroid-art">
+          <svg viewBox="0 0 180 130" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="photoBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#E8E6CC"/><stop offset="100%" stop-color="#9AAA83"/></linearGradient></defs>
+            <rect width="180" height="130" fill="url(#photoBg)"/><circle cx="137" cy="28" r="43" fill="#F5F1D5" opacity=".35"/>
+            <g fill="none" stroke="#73875E" stroke-width="2"><path d="M40 130Q55 65 88 10"/><path d="M100 130Q111 80 155 44"/><path d="M80 130Q74 75 32 35"/></g>
+            <g fill="#70865D" opacity=".8"><ellipse cx="66" cy="57" rx="12" ry="25" transform="rotate(-38 66 57)"/><ellipse cx="96" cy="40" rx="10" ry="22" transform="rotate(36 96 40)"/><ellipse cx="121" cy="81" rx="12" ry="25" transform="rotate(-38 121 81)"/><ellipse cx="151" cy="54" rx="10" ry="24" transform="rotate(39 151 54)"/><ellipse cx="44" cy="70" rx="9" ry="20" transform="rotate(-45 44 70)"/></g>
+          </svg>
+        </div></div>
+      </article>
+
+      <!-- 03. MY FAVORITES -->
+      <article class="archive-card card-favorite" id="favorites">
+        <div class="card-header">
+          <span class="card-number">03.</span>
+          <h2 class="card-title">MY FAVORITES</h2>
+          <svg class="card-icon" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 45V37C15 22 26 12 40 12S65 22 65 37V45"/><rect x="11" y="40" width="13" height="25" rx="6" transform="rotate(-10 17 52)"/><rect x="56" y="40" width="13" height="25" rx="6" transform="rotate(10 62 52)"/><path d="M24 59C28 67 52 67 56 59"/></svg>
+        </div>
+        <div class="card-content">
+          <div class="card-entry"><h3>가장 좋아하는 노래</h3><p>'Darling', 'Dear', 미니 3집 앨범 수록 전체</p></div>
+        </div>
+        <div class="vinyl" aria-hidden="true"></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer"><div class="page"><div class="footer-text">DOH KYUNG SOO · MY LITTLE FAN ARCHIVE</div></div></footer>
+
+  <!-- JavaScript: 메뉴 이동 및 사진 오류 처리 -->
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    function setActiveLink(targetHash) {
+      navLinks.forEach(link => {
+        const active = link.getAttribute('href') === targetHash;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', event => {
+        const targetHash = link.getAttribute('href');
+        const target = document.querySelector(targetHash);
+        if (!target) return;
+        event.preventDefault();
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({behavior: reducedMotion ? 'auto' : 'smooth', block:'start'});
+        if (link.classList.contains('nav-link') || targetHash === '#home') setActiveLink(targetHash);
+        history.replaceState(null, '', targetHash);
+      });
+    });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 100) setActiveLink('#home');
+    }, {passive:true});
+    const heroPhoto = document.getElementById('heroPhoto');
+    const heroFallback = document.getElementById('heroFallback');
+    function handlePhotoError() {heroPhoto.style.display='none';heroFallback.hidden=false;}
+    heroPhoto.addEventListener('error', handlePhotoError);
+    if (heroPhoto.complete && heroPhoto.naturalWidth === 0) handlePhotoError();
+    const validHashes = Array.from(navLinks).map(link => link.getAttribute('href'));
+    if (validHashes.includes(window.location.hash)) setActiveLink(window.location.hash);
+  </script>
+</body>
+</html>

@@ -1,0 +1,1024 @@
+
+/* 고급스러운 영문 및 한글 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap');
+
+
+/* ========================================
+   1. 기본 컬러 및 공통 스타일
+======================================== */
+
+:root {
+    --background: #14110e;
+    --panel: #211c17;
+    --gold: #d5ad63;
+    --gold-light: #f1d18e;
+    --ivory: #f3ebdf;
+    --text: #f5f0e8;
+    --muted: #b5a99b;
+    --border: #494036;
+    --serif: 'Cormorant Garamond', 'Noto Serif KR', Georgia, serif;
+    --sans: 'Noto Sans KR', Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+button,
+textarea {
+    transition: background 0.2s, border-color 0.2s;
+}
+
+button:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+fieldset {
+    border: none;
+    min-width: 0;
+}
+
+
+/* ========================================
+   2. 상단 헤더
+======================================== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 15px 4%;
+    min-height: 82px;
+    border-bottom: 1px solid var(--border);
+    background: #18130f;
+}
+
+.brand {
+    text-align: center;
+}
+
+.brand-subtitle {
+    display: block;
+    color: var(--gold-light);
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: 4px;
+}
+
+.brand h1 {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    line-height: 1.15;
+}
+
+.header-title {
+    color: var(--gold-light);
+    font-family: var(--serif);
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+.header-slogan {
+    color: var(--gold-light);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 21px;
+}
+
+
+/* ========================================
+   3. 전체 레이아웃
+======================================== */
+
+.container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 3% 32px;
+}
+
+.eyebrow {
+    display: block;
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+/* ========================================
+   4. 상단 피자 메뉴
+======================================== */
+
+.menu-section {
+    margin-bottom: 22px;
+}
+
+.pizza-menu {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.pizza-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #1c1713;
+    color: var(--text);
+    text-align: center;
+}
+
+.pizza-card:hover {
+    border-color: var(--gold);
+    background: #292117;
+}
+
+.pizza-card.active {
+    border-color: var(--gold-light);
+    background: linear-gradient(145deg, #3b2e1d, #201a14);
+    box-shadow: inset 0 0 0 1px var(--gold);
+}
+
+/* 메뉴 이미지 규격 */
+.pizza-card img {
+    width: 100%;
+    max-width: 150px;
+    height: 98px;
+    margin-bottom: 8px;
+    object-fit: contain;
+}
+
+.pizza-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.pizza-card .card-english {
+    margin-top: 2px;
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 13px;
+}
+
+.pizza-card .card-price {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   5. 본문 3단 레이아웃
+======================================== */
+
+.order-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(0, 1.1fr)
+        minmax(0, 0.82fr);
+    gap: 18px;
+    align-items: start;
+}
+
+
+/* ========================================
+   6. 왼쪽 대형 피자 이미지
+======================================== */
+
+.pizza-detail {
+    overflow: hidden;
+    border: 1px solid #30271e;
+    border-radius: 14px;
+    background: #191410;
+}
+
+.hero-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #191410;
+}
+
+/* 원본 사진 비율을 유지하며 크게 표시 */
+.hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.pizza-description {
+    padding: 15px 24px 24px;
+}
+
+.signature {
+    font-family: var(--serif);
+    font-size: 23px;
+    font-style: italic;
+    color: var(--gold);
+}
+
+.pizza-description h2 {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    font-size: clamp(24px, 2.4vw, 40px);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 3px 0;
+    word-break: keep-all;
+}
+
+.english-name {
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 25px;
+}
+
+.gold-line {
+    width: 65px;
+    height: 1px;
+    background: var(--gold);
+    margin: 14px 0;
+}
+
+#mainPizzaDescription {
+    color: #d8cfc2;
+    font-size: 14px;
+    line-height: 1.8;
+    word-break: keep-all;
+}
+
+
+/* ========================================
+   7. 중앙 주문 옵션 패널
+======================================== */
+
+.customization-panel {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: linear-gradient(145deg, #29221b, #1c1814);
+}
+
+.option-section {
+    margin-bottom: 20px;
+}
+
+.option-section legend,
+.quantity-section h3,
+.request-section label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 11px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.option-number {
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.optional-text {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--muted);
+}
+
+.size-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.dough-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+
+/* 사이즈 및 도우 선택 카드 */
+
+.option-card {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    min-width: 0;
+}
+
+.option-card input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.option-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 58px;
+    height: 100%;
+    padding: 8px 5px;
+    border: 1px solid #554b40;
+    border-radius: 7px;
+    background: #241e18;
+    text-align: center;
+    font-size: 13px;
+    word-break: keep-all;
+}
+
+.option-content strong {
+    font-family: var(--serif);
+    font-size: 25px;
+    line-height: 1;
+}
+
+.option-content small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.option-card:hover .option-content {
+    border-color: var(--gold);
+}
+
+/* 선택한 옵션은 골드로 표시 */
+.option-card input:checked + .option-content {
+    border-color: var(--gold-light);
+    background: #423321;
+    color: var(--gold-light);
+    box-shadow: inset 0 0 0 1px var(--gold);
+}
+
+.option-card input:checked + .option-content small {
+    color: var(--gold-light);
+}
+
+.option-card input:focus-visible + .option-content {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   8. 추가 토핑
+======================================== */
+
+.topping-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+}
+
+.topping-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    padding: 9px 0;
+    border-bottom: 1px solid #40372e;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.topping-item input {
+    flex-shrink: 0;
+    width: 17px;
+    height: 17px;
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+
+.topping-name {
+    word-break: keep-all;
+}
+
+.topping-cost {
+    margin-left: auto;
+    white-space: nowrap;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.topping-item:has(input:checked) {
+    color: var(--gold-light);
+}
+
+.topping-item:has(input:checked) .topping-cost {
+    color: var(--gold-light);
+}
+
+
+/* ========================================
+   9. 수량 조절
+======================================== */
+
+.quantity-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.quantity-section h3 {
+    margin-bottom: 0;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-control button {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #665747;
+    border-radius: 50%;
+    background: #302820;
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1;
+}
+
+.quantity-control button:hover:not(:disabled) {
+    background: var(--gold);
+    color: #17120e;
+}
+
+#quantityDisplay {
+    min-width: 22px;
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+/* ========================================
+   10. 주문 요청사항
+======================================== */
+
+.request-section {
+    margin-top: 16px;
+}
+
+.request-section textarea {
+    display: block;
+    width: 100%;
+    min-height: 75px;
+    padding: 12px;
+    resize: vertical;
+    border: 1px solid #5a4e41;
+    border-radius: 7px;
+    background: #191511;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.request-section textarea::placeholder {
+    color: #9e9182;
+}
+
+
+/* ========================================
+   11. 오른쪽 주문 내역
+======================================== */
+
+.summary-panel {
+    position: sticky;
+    top: 20px;
+    padding: 22px;
+    border-radius: 14px;
+    background: var(--ivory);
+    color: #302318;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+}
+
+.summary-heading {
+    padding-bottom: 13px;
+    border-bottom: 1px solid #d2c3ad;
+}
+
+.summary-heading .eyebrow {
+    color: #8e6b39;
+}
+
+.summary-heading h2 {
+    margin-top: 3px;
+    font-family: 'Noto Serif KR', Georgia, serif;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.summary-product {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 0;
+}
+
+.summary-product img {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.summary-product h3 {
+    font-size: 16px;
+    font-weight: 700;
+    word-break: keep-all;
+}
+
+.summary-product p {
+    margin-top: 4px;
+    color: #756452;
+    font-size: 12px;
+    word-break: keep-all;
+}
+
+.selected-toppings {
+    padding: 10px 0 13px;
+    border-bottom: 1px solid #d2c3ad;
+    font-size: 12px;
+}
+
+.selected-toppings span {
+    font-weight: 600;
+}
+
+.selected-toppings p {
+    margin-top: 4px;
+    color: #756452;
+    overflow-wrap: anywhere;
+}
+
+.price-details,
+.subtotal-details {
+    padding: 12px 0;
+    border-bottom: 1px solid #d2c3ad;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 13px;
+}
+
+.price-row strong {
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.total-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#totalPrice {
+    color: #80531e;
+    font-size: clamp(22px, 2vw, 32px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* ========================================
+   12. 주문 및 초기화 버튼
+======================================== */
+
+.order-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.order-button {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #b7893e;
+    border-radius: 7px;
+    background: linear-gradient(
+        110deg,
+        #bd8c3e,
+        #ebc779,
+        #bd8c3e
+    );
+    color: #21170c;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.order-button:hover {
+    background: #e8c47f;
+}
+
+.reset-button {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #88765f;
+    border-radius: 7px;
+    background: transparent;
+    color: #3a2b1b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.reset-button:hover {
+    background: #e6d9c6;
+}
+
+
+/* ========================================
+   13. 주문 완료 팝업
+======================================== */
+
+.order-modal {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(490px, calc(100% - 32px));
+    max-height: 90vh;
+    max-height: 90dvh;
+    overflow-y: auto;
+    border: 1px solid var(--gold);
+    border-radius: 16px;
+    background: var(--ivory);
+    color: #302318;
+}
+
+.order-modal::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    padding: 30px;
+    text-align: center;
+}
+
+.complete-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    border: 1px solid #b28948;
+    border-radius: 50%;
+    color: #8a6027;
+    font-size: 30px;
+}
+
+.modal-content .eyebrow {
+    color: #8a6027;
+}
+
+.modal-content h2 {
+    margin-top: 8px;
+    font-family: 'Noto Serif KR', Georgia, serif;
+    font-size: 23px;
+    word-break: keep-all;
+}
+
+.modal-subtitle {
+    margin: 9px 0 20px;
+    color: #756452;
+    font-size: 13px;
+}
+
+.modal-order-details {
+    padding: 15px;
+    border-top: 1px solid #d2c3ad;
+    border-bottom: 1px solid #d2c3ad;
+    text-align: left;
+}
+
+.modal-detail-row {
+    display: grid;
+    grid-template-columns: 85px minmax(0, 1fr);
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+}
+
+.modal-detail-row span {
+    color: #756452;
+}
+
+.modal-detail-row strong {
+    text-align: right;
+    font-weight: 600;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.modal-request {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 6px;
+    background: #e8ddcc;
+    font-size: 13px;
+}
+
+.modal-request p {
+    margin-top: 5px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.modal-total {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 15px;
+    border-top: 1px solid #d2c3ad;
+    font-weight: 700;
+}
+
+.modal-total strong {
+    font-size: 25px;
+    color: #80531e;
+}
+
+.demo-notice {
+    margin: 14px 0;
+    color: #81715d;
+    font-size: 11px;
+}
+
+
+/* ========================================
+   14. 하단 푸터
+======================================== */
+
+.footer {
+    padding: 22px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+}
+
+.footer-brand {
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 23px;
+    letter-spacing: 4px;
+}
+
+.footer p {
+    margin: 3px 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+}
+
+.footer small {
+    font-size: 10px;
+}
+
+
+/* ========================================
+   15. 반응형 디자인
+======================================== */
+
+/* 일반 노트북 */
+@media (min-width: 1101px) and (max-width: 1400px) {
+
+    .container {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .order-layout {
+        gap: 12px;
+    }
+
+    .customization-panel,
+    .summary-panel {
+        padding: 16px;
+    }
+
+    .topping-options {
+        column-gap: 8px;
+    }
+
+    .topping-item {
+        font-size: 11px;
+        gap: 5px;
+    }
+
+    .topping-cost {
+        font-size: 10px;
+    }
+}
+
+
+/* 태블릿 및 작은 노트북 */
+@media (max-width: 1100px) {
+
+    .header-title {
+        display: none;
+    }
+
+    .pizza-menu {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .order-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .summary-panel {
+        grid-column: 1 / -1;
+        position: static;
+    }
+
+    .order-buttons {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+
+/* 모바일 */
+@media (max-width: 650px) {
+
+    .header {
+        justify-content: center;
+        padding: 16px;
+    }
+
+    .brand h1 {
+        font-size: 28px;
+    }
+
+    .header-slogan {
+        display: none;
+    }
+
+    .container {
+        padding: 15px 12px 24px;
+    }
+
+    .pizza-menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .pizza-card img {
+        height: 90px;
+    }
+
+    .pizza-card h3 {
+        font-size: 14px;
+    }
+
+    .pizza-card .card-price {
+        font-size: 10px;
+    }
+
+    .order-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .hero-image-wrap {
+        aspect-ratio: 5 / 4;
+    }
+
+    .pizza-description {
+        padding: 15px 20px 23px;
+    }
+
+    .customization-panel,
+    .summary-panel {
+        padding: 18px;
+    }
+
+    .summary-panel {
+        grid-column: auto;
+    }
+
+    .order-buttons {
+        display: flex;
+    }
+
+    #totalPrice {
+        font-size: 29px;
+    }
+
+    .modal-content {
+        padding: 22px;
+    }
+}
+
+
+/* 화면 폭이 매우 좁은 모바일 */
+@media (max-width: 360px) {
+
+    .topping-options {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pizza-card .card-price {
+        white-space: normal;
+    }
+
+    .section-heading {
+        flex-wrap: wrap;
+    }
+}

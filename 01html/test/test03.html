@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>나의 블로그</title>
+    <style>
+        :root {
+            --forest: #214c36;
+            --leaf: #38644b;
+            --mist: #eef4ed;
+            --line: #dae7da;
+            --ink: #293d32;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: clamp(1rem, 5vw, 4rem) 1rem;
+            background: var(--mist);
+            color: var(--ink);
+            font-family: system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+
+        article {
+            max-width: 48rem;
+            margin-inline: auto;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 1.25rem;
+            box-shadow: 0 12px 32px rgb(33 76 54 / 8%);
+        }
+
+        header,
+        .story,
+        footer {
+            padding: clamp(1.25rem, 5vw, 3rem);
+        }
+
+        header {
+            background: var(--forest);
+            color: white;
+        }
+
+        .category {
+            margin: 0 0 0.5rem;
+            color: #d1e8d5;
+            font-size: 0.875rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.625rem, 5vw, 2.75rem);
+            line-height: 1.25;
+        }
+
+        .story p {
+            margin: 0 0 1.25rem;
+        }
+
+        .story p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin-bottom: 1.25rem;
+            border-radius: 0.75rem;
+        }
+
+        strong {
+            color: var(--forest);
+        }
+
+        footer {
+            background: #f5f8f3;
+            border-top: 1px solid var(--line);
+        }
+
+        footer p {
+            margin: 0 0 0.75rem;
+        }
+
+        .park-link {
+            display: inline-block;
+            padding: 0.6rem 1rem;
+            border-radius: 0.5rem;
+            background: var(--forest);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .park-link:hover {
+            background: var(--leaf);
+            text-decoration: underline;
+        }
+
+        .park-link:focus-visible {
+            outline: 2px solid var(--forest);
+            outline-offset: 4px;
+        }
+
+        .credit {
+            margin: 1rem 0 0;
+            color: var(--leaf);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <article>
+            <header>
+                <p class="category">카테고리 : 일상 이야기</p>
+                <h1>[일상] 서울숲 나들이 후기!</h1>
+            </header>
+
+            <div class="story">
+                <p>
+                    오늘은 서울숲에 다녀왔습니다!<br>
+                    날씨도 좋고 산책하기 딱 좋은 날이었어요. ^^
+                </p>
+
+                <img alt="서울숲 거울연못" src="https://mediahub.seoul.go.kr/uploads/mediahub/2024/04/PjSIVqMEOCwmYrREpqQshhDkbXPMAeyG.jpg">
+
+                <p>
+                    서울숲에는 멋진 산책로가 많았습니다.<br>
+                    특히 <strong>거울연못</strong>에 비친 풍경이 정말 예뻤어요!<br>
+                    도심 속에서 자연을 느낄 수 있어 좋았습니다. ^^
+                </p>
+
+                <img alt="서울숲 튤립 정원" src="https://mediahub.seoul.go.kr/uploads/mediahub/2024/04/HVtAsCkWHpVcucQNRbTbpYarQrHZsdCJ.jpg">
+
+                <p>
+                    알록달록한 튤립도 구경했습니다.<br>
+                    다음에도 꼭 다시 방문하고 싶네요. ^^
+                </p>
+            </div>
+
+            <footer>
+                <p>서울숲에 대해 더 알아보고 싶다면? 아래를 클릭하세요!</p>
+                <a class="park-link" target="_blank" rel="noopener" href="https://parks.seoul.go.kr/park/detailView.do?pIdx=5">서울숲 공식 안내 페이지</a>
+                <p class="credit">사진 출처 : 서울시 내 손안에 서울 (박우영)</p>
+            </footer>
+        </article>
+    </main>
+</body>
+</html>

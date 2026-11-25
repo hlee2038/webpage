@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko" data-theme="light" data-converter="length">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>길이 단위 변환기</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-ruler" viewBox="0 0 24 24">
+      <path d="m2 17 15-15 5 5L7 22zM5 14l2 2m1-5 2 2m1-5 2 2m1-5 2 2"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11Z"/>
+    </symbol>
+    <symbol id="icon-reset" viewBox="0 0 24 24">
+      <path d="M3 10a9 9 0 0 1 15-5l3 3m0-5v5h-5M21 14a9 9 0 0 1-15 5l-3-3m0 5v-5h5"/>
+    </symbol>
+    <symbol id="icon-switch" viewBox="0 0 24 24">
+      <path d="M4 7h16m-4-4 4 4-4 4m4 6H4m4-4-4 4 4 4"/>
+    </symbol>
+    <symbol id="icon-history" viewBox="0 0 24 24">
+      <path d="M3 11a9 9 0 1 1 2 7M3 5v6h6m3-4v6l4 2"/>
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M3 6h18m-12 0V3h6v3m4 0-1 15H6L5 6m5 4v7m4-7v7"/>
+    </symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24">
+      <rect x="8" y="7" width="12" height="15" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2"/>
+    </symbol>
+  </svg>
+  <main class="dashboard">
+    <header class="hero">
+      <div class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#icon-ruler"/></svg></div>
+      <div class="hero-content">
+        <h1>길이 단위 변환기</h1>
+        <p lang="en">Length Unit Converter</p>
+        <p class="unit-list">mm · cm · m · km · in · ft · yd · mi</p>
+      </div>
+      <div class="ruler" aria-hidden="true"></div>
+      <div class="theme" role="group" aria-label="화면 모드">
+        <button type="button" id="light-theme" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#icon-sun"/></svg>라이트</button>
+        <button type="button" id="dark-theme" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-moon"/></svg>다크</button>
+      </div>
+    </header>
+    <div class="layout">
+      <div class="converter">
+        <section class="card input-card" aria-labelledby="input-title">
+          <h2 id="input-title"><svg class="icon" aria-hidden="true"><use href="#icon-ruler"/></svg>변환할 길이</h2>
+          <div class="fields">
+            <div class="amount-field">
+              <label for="amount" class="sr-only">입력값</label>
+              <input id="amount" type="text" inputmode="decimal" autocomplete="off" maxlength="300" placeholder="길이를 입력하세요" aria-describedby="error">
+              <button type="button" id="clear-amount" aria-label="입력값 지우기" hidden>×</button>
+            </div>
+            <div class="select-field">
+              <label for="unit" class="sr-only">기준 단위</label>
+              <select id="unit"></select>
+            </div>
+            <button type="button" id="reset" class="action"><svg class="icon" aria-hidden="true"><use href="#icon-reset"/></svg>초기화</button>
+          </div>
+          <p id="error" class="error" role="alert" hidden></p>
+        </section>
+        <section class="card result-card" aria-labelledby="result-title">
+          <div class="section-head">
+            <h2 id="result-title"><svg class="icon" aria-hidden="true"><use href="#icon-switch"/></svg>변환 결과</h2>
+            <label class="precision">소수점 자릿수 <span class="select-field"><select id="precision"></select></span></label>
+          </div>
+          <ul id="results" class="results"></ul>
+          <p class="status" id="status" role="status"></p>
+        </section>
+      </div>
+      <aside class="card history" aria-labelledby="history-title">
+        <div class="section-head">
+          <h2 id="history-title"><svg class="icon" aria-hidden="true"><use href="#icon-history"/></svg>최근 변환 기록</h2>
+          <button type="button" id="clear-history" class="action"><svg class="icon" aria-hidden="true"><use href="#icon-trash"/></svg>전체 삭제</button>
+        </div>
+        <p class="empty" id="empty-history">아직 변환 기록이 없습니다.</p>
+        <ul id="history-list"></ul>
+        <svg class="tape" viewBox="0 0 330 185" aria-hidden="true">
+          <defs>
+            <linearGradient id="case-fill" x2=".8" y2="1"><stop stop-color="var(--illustration-light)"/><stop offset="1" stop-color="var(--illustration-fill)"/></linearGradient>
+          </defs>
+          <ellipse cx="222" cy="128" rx="101" ry="28" fill="var(--illustration-shadow)"/>
+          <path d="M29 139 193 101l22 18L45 164l-16-9Z" fill="var(--illustration-light)" stroke="var(--illustration-line)" stroke-width="3" stroke-linejoin="round"/>
+          <path d="m29 139 19 12v22q-1 4-5 2l-14-10q-3-2-3-6v-15q0-5 3-5Z" fill="var(--illustration-fill)" stroke="var(--illustration-line)" stroke-width="3" stroke-linejoin="round"/>
+          <path d="m42 138 14 10m12-9 6 5m17-15 9 8m14-11 6 6m14-12 9 8m15-12 6 6" fill="none" stroke="var(--illustration-line)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M150 108V83c0-37 34-62 64-58 15 2 29 10 45 17l10 65-79 35Z" fill="url(#case-fill)" stroke="var(--illustration-line)" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M150 74q-5 0-5 5v9l30 15 10-15Zm-4 15v15l28 16 6-15Z" fill="var(--illustration-fill)" stroke="var(--illustration-line)" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M176 128V98c0-29 22-55 50-60 34-7 47 15 47 39v26q0 10-10 13l-73 21q-14 4-14-9Z" fill="url(#case-fill)" stroke="var(--illustration-line)" stroke-width="3"/>
+          <path d="M201 104V94c0-17 11-30 25-34 15-4 27 5 27 23q0 13-9 16l-34 12q-9 3-9-7Z" fill="var(--illustration-fill)" stroke="var(--illustration-line)" stroke-width="3"/>
+          <path d="M180 125v-25c0-29 22-53 50-58M49 154l121-32" fill="none" stroke="var(--illustration-light)" stroke-width="2"/>
+        </svg>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

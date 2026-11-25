@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>회원가입</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --text: #202139;
+            --muted: #5d6177;
+            --accent: #4f46c8;
+            --border: #d8daea;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: clamp(1rem, 5vw, 3rem);
+            display: grid;
+            place-items: center;
+            background: radial-gradient(ellipse at top left, #e8e4ff, transparent 60%),
+                        linear-gradient(145deg, #f7f8ff, #eef3fc);
+            color: var(--text);
+            font-family: system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+            line-height: 1.5;
+        }
+
+        .signup {
+            width: min(100%, 29rem);
+            padding: clamp(1.5rem, 6vw, 2.75rem);
+            border: 1px solid #e4e3f2;
+            border-top: 4px solid var(--accent);
+            border-radius: 1.5rem;
+            background: #fff;
+            box-shadow: 0 20px 56px rgb(38 35 83 / 12%);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.75rem, 6vw, 2.25rem);
+            letter-spacing: -0.04em;
+        }
+
+        header p {
+            margin: 0.5rem 0 1.75rem;
+            color: var(--muted);
+        }
+
+        form,
+        .field {
+            display: grid;
+        }
+
+        form {
+            gap: 1.125rem;
+        }
+
+        .field {
+            gap: 0.45rem;
+        }
+
+        label {
+            font-size: 0.9375rem;
+            font-weight: 650;
+        }
+
+        input,
+        button {
+            min-height: 3rem;
+            border: 1px solid var(--border);
+            border-radius: 0.65rem;
+            font: inherit;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            background: #fafaff;
+            color: var(--text);
+        }
+
+        input::placeholder {
+            color: var(--muted);
+        }
+
+        :is(input, button):focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        button {
+            padding: 0.65rem;
+            background: #fff;
+            color: var(--text);
+            font-weight: 650;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f0effb;
+        }
+
+        .primary {
+            border-color: transparent;
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .primary:hover {
+            background: #3e35ad;
+        }
+    </style>
+</head>
+<body>
+    <main class="signup">
+        <header>
+            <h1>회원가입</h1>
+            <p>가입에 필요한 정보를 입력해 주세요.</p>
+        </header>
+
+        <!-- 이 실습 폼은 입력값을 전송하지 않고 완료 화면으로 이동합니다. -->
+        <form action="test07_1.html">
+            <div class="field">
+                <label for="full-name">이름</label>
+                <input id="full-name" type="text" autocomplete="name" placeholder="이름을 입력하세요" required>
+            </div>
+
+            <div class="field">
+                <label for="email">이메일</label>
+                <input id="email" type="email" autocomplete="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="field">
+                <label for="password">비밀번호</label>
+                <input id="password" type="password" autocomplete="new-password" placeholder="비밀번호를 입력하세요" required>
+            </div>
+
+            <div class="actions">
+                <button type="reset">취소</button>
+                <button class="primary" type="submit">가입하기</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

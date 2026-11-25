@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko" data-theme="light" data-converter="weight">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>무게 단위 변환기</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-scale" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 12a5 5 0 0 1 10 0Zm5 0 2-3"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M19 5l-1.5 1.5m-11 11L5 19"/>
+    </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M21 14A9 9 0 0 1 10 3a9 9 0 1 0 11 11Z"/>
+    </symbol>
+    <symbol id="icon-reset" viewBox="0 0 24 24">
+      <path d="M3 10a9 9 0 0 1 15-5l3 3m0-5v5h-5M21 14a9 9 0 0 1-15 5l-3-3m0 5v-5h5"/>
+    </symbol>
+    <symbol id="icon-switch" viewBox="0 0 24 24">
+      <path d="M4 7h16m-4-4 4 4-4 4m4 6H4m4-4-4 4 4 4"/>
+    </symbol>
+    <symbol id="icon-history" viewBox="0 0 24 24">
+      <path d="M3 11a9 9 0 1 1 2 7M3 5v6h6m3-4v6l4 2"/>
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M3 6h18m-12 0V3h6v3m4 0-1 15H6L5 6m5 4v7m4-7v7"/>
+    </symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24">
+      <rect x="8" y="7" width="12" height="15" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2"/>
+    </symbol>
+  </svg>
+  <main class="dashboard">
+    <header class="hero">
+      <div class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#icon-scale"/></svg></div>
+      <div class="hero-content">
+        <h1>무게 단위 변환기</h1>
+        <p lang="en">Weight Unit Converter</p>
+        <p class="unit-list">mg · g · kg · t · oz · lb · st · US ton · UK ton</p>
+      </div>
+      <div class="scale-mark" aria-hidden="true">
+        <svg viewBox="0 0 90 36">
+          <path d="M2 32h26m34 0h26M45 5v27m-10 0h20M18 11h54M18 11l-8 12h16Zm54 0-8 12h16ZM10 23q8 10 16 0m38 0q8 10 16 0"/>
+          <circle cx="45" cy="10" r="3"/>
+        </svg>
+      </div>
+      <div class="theme" role="group" aria-label="화면 모드">
+        <button type="button" id="light-theme" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#icon-sun"/></svg>라이트</button>
+        <button type="button" id="dark-theme" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-moon"/></svg>다크</button>
+      </div>
+    </header>
+    <div class="layout">
+      <div class="converter">
+        <section class="card input-card" aria-labelledby="input-title">
+          <h2 id="input-title"><svg class="icon" aria-hidden="true"><use href="#icon-scale"/></svg>변환할 무게</h2>
+          <div class="fields">
+            <div class="amount-field">
+              <label for="amount" class="sr-only">입력값</label>
+              <input id="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="무게를 입력하세요" aria-describedby="error">
+              <button type="button" id="clear-amount" aria-label="입력값 지우기" hidden>×</button>
+            </div>
+            <div class="select-field">
+              <label for="unit" class="sr-only">기준 단위</label>
+              <select id="unit"></select>
+            </div>
+            <button type="button" id="reset" class="action"><svg class="icon" aria-hidden="true"><use href="#icon-reset"/></svg>초기화</button>
+          </div>
+          <p id="error" class="error" role="alert" hidden></p>
+        </section>
+        <section class="card result-card" aria-labelledby="result-title">
+          <div class="section-head">
+            <h2 id="result-title"><svg class="icon" aria-hidden="true"><use href="#icon-switch"/></svg>변환 결과</h2>
+            <label class="precision">소수점 자릿수 <span class="select-field"><select id="precision"></select></span></label>
+          </div>
+          <ul id="results" class="results"></ul>
+          <p class="status" id="status" role="status"></p>
+        </section>
+      </div>
+      <aside class="card history" aria-labelledby="history-title">
+        <div class="section-head">
+          <h2 id="history-title"><svg class="icon" aria-hidden="true"><use href="#icon-history"/></svg>최근 변환 기록</h2>
+          <button type="button" id="clear-history" class="action"><svg class="icon" aria-hidden="true"><use href="#icon-trash"/></svg>전체 삭제</button>
+        </div>
+        <p class="empty" id="empty-history">아직 변환 기록이 없습니다.</p>
+        <ul id="history-list"></ul>
+        <svg class="scale-art" viewBox="0 0 330 185" aria-hidden="true">
+          <defs>
+            <linearGradient id="scale-fill" x2=".8" y2="1"><stop stop-color="var(--illustration-light)"/><stop offset="1" stop-color="var(--illustration-fill)"/></linearGradient>
+          </defs>
+          <ellipse cx="174" cy="151" rx="144" ry="23" fill="var(--illustration-shadow)"/>
+          <g stroke="var(--illustration-line)" stroke-width="3" stroke-linejoin="round">
+            <path d="M59 132l22-68q4-12 18-12h99q12 0 17 13l26 65-8 16H72Z" fill="url(#scale-fill)"/>
+            <path d="M57 130h183v14q0 6-8 6H65q-8 0-8-6Z" fill="var(--illustration-fill)"/>
+            <path d="M48 42q0-6 9-6h164q9 0 9 6v10l-11 10H62L48 52Z" fill="url(#scale-fill)"/>
+            <path d="M49 47h180M80 126h120" fill="none"/>
+            <path d="M108 112a39 39 0 0 1 78 0Z" fill="var(--illustration-light)"/>
+            <path d="m128 91 4 5m15-13v7m19 1-4 5m-15 14 12-14" fill="none" stroke-linecap="round"/>
+            <circle cx="147" cy="110" r="3" fill="var(--illustration-line)"/>
+            <path d="M264 105v-7a10 10 0 0 1 20 0v7h-6v-7a4 4 0 0 0-8 0v7Z" fill="var(--illustration-light)"/>
+            <path d="M263 105h22l12 36q3 8-7 10h-32q-10-2-7-10Z" fill="url(#scale-fill)"/>
+            <path d="M259 141h30" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
