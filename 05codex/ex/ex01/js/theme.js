@@ -11,7 +11,7 @@
     light: document.querySelector('#light-theme'),
     dark: document.querySelector('#dark-theme')
   };
-  const pageLinks = document.querySelectorAll('.site-nav a, .converter-menu a');
+  const pageLinks = document.querySelectorAll('.converter-menu a, .home-link');
   const localFile = location.protocol === 'file:';
 
   function readTheme() {
