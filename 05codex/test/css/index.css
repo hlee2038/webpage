@@ -1,0 +1,77 @@
+.game-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 1.25vw, 15px);
+}
+.game-card {
+  --card: var(--sky);
+  --card-edge: #96cdf4;
+  --label-start: #1684d7;
+  --label-end: #0759ac;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  justify-items: center;
+  gap: clamp(6px, 1.12vw, 12px);
+  min-width: 0;
+  padding: clamp(8px, 1.18vw, 14px);
+  border: 2px solid var(--card-edge);
+  border-radius: clamp(17px, 3.5vw, 36px);
+  background: linear-gradient(135deg, #fff5, transparent), var(--card);
+  box-shadow: inset 0 0 14px #fff6;
+  transition: transform 180ms, box-shadow 180ms;
+}
+.game-card:hover { transform: translateY(-4px); box-shadow: 0 7px 14px #5124822e; }
+.lotto-card { --card: var(--pink); --card-edge: #f5a8cb; --label-start: #df3973; --label-end: #a61c51; }
+.game-card h2 {
+  width: 94%;
+  margin: 0;
+  padding: .27em .23em .36em;
+  border-radius: 99px;
+  background: linear-gradient(var(--label-start), var(--label-end));
+  color: white;
+  font: 900 clamp(1rem, 2.85vw, 1.97rem)/1.1 var(--retro);
+  letter-spacing: -.04em;
+}
+.game-card p {
+  align-self: center;
+  margin: .12em 0;
+  font-weight: 750;
+  font-size: clamp(.78rem, 1.75vw, 1.1rem);
+  line-height: 1.4;
+}
+.game-card .button { width: min(100%, 240px); }
+.preview { display: flex; align-items: center; justify-content: center; width: 100%; height: clamp(47px, 8.1vw, 88px); }
+.hands svg { height: 100%; width: 26%; overflow: visible; }
+.hands .rays { width: 11%; height: 58%; fill: none; stroke: #e7a900; stroke-width: 5; stroke-linecap: round; }
+.hands svg:nth-child(2) { transform: translateY(6%) rotate(-10deg); }
+.hands svg:last-child { transform: translateY(4%) rotate(9deg); }
+.sample-balls { padding-inline: 1%; }
+.sample-balls span {
+  --ball: #f7c326;
+  --ball-dark: #e7a512;
+  display: grid;
+  place-items: center;
+  width: 18%;
+  aspect-ratio: 1;
+  margin-inline: -.55%;
+  border: 2px solid #211b45;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 27% 23%, white 0 6%, transparent 9%), linear-gradient(140deg, var(--ball), var(--ball-dark));
+  color: white;
+  font: 900 clamp(.77rem, 2.4vw, 1.6rem)/1 var(--retro);
+  paint-order: stroke fill;
+  -webkit-text-stroke: 2px #211b45;
+  text-shadow: 1px 2px #211b45;
+}
+.sample-balls span:nth-child(2) { --ball: #3aaaf9; --ball-dark: #0e54ba; }
+.sample-balls span:nth-child(3) { --ball: #ff6972; --ball-dark: #c52844; }
+.sample-balls span:nth-child(4) { --ball: #aeb8cf; --ball-dark: #606783; }
+.sample-balls span:nth-child(5) { --ball: #62cb70; --ball-dark: #1c7d40; }
+.sample-balls span:nth-child(6) { --ball: #84d56a; --ball-dark: #288248; }
+@media (max-width: 480px) {
+  .game-cards { grid-template-columns: minmax(0, 1fr); }
+  .game-card { padding: 9px 12px; }
+  .game-card h2 { max-width: 235px; font-size: 1.2rem; }
+  .preview { max-width: 250px; height: 60px; }
+  .sample-balls span { font-size: 1.1rem; }
+}

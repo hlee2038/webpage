@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>미니게임 아케이드 | MINI GAME ARCADE</title>
+  <link rel="icon" type="image/svg+xml" href="assets/controller.svg">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="page-index">
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" class="hand-definitions" aria-hidden="true">
+  <defs>
+    <linearGradient id="skin" x2=".75" y2="1">
+      <stop stop-color="#fff7ed"/>
+      <stop offset="1" stop-color="#ffe6d1"/>
+    </linearGradient>
+    <symbol id="rock" viewBox="0 0 200 200">
+      <g fill="url(#skin)" stroke="#391a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M143 52C139 21 111 19 98 39C77 26 61 39 54 53C36 47 15 66 12 92C6 132 37 173 83 181C125 189 166 168 180 132C197 91 178 53 143 52Z"/>
+        <path fill="none" stroke="#f4a68f" stroke-width="5" d="M101 42l7 15M57 61l7 17M103 104c-8 8-13 18-14 28"/>
+        <path fill="none" d="M32 90c3 24 24 32 36 14c5-7 6-15 2-24c6 37 32 32 40 14"/>
+        <path d="M144 52c-26-3-51 5-51 25c0 17 18 26 40 19"/>
+      </g>
+    </symbol>
+    <symbol id="scissors" viewBox="0 0 200 200">
+      <g fill="url(#skin)" stroke="#391a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M58 96C53 80 47 59 51 37C57 11 83 11 91 33C97 48 98 67 99 83C105 62 116 39 130 30C148 18 167 34 161 54C157 69 147 85 139 99C159 107 169 126 163 146C154 175 127 187 94 186C59 186 31 173 22 149C12 126 27 100 58 96Z"/>
+        <path fill="none" stroke="#f4a68f" stroke-width="5" d="M110 140c-13 5-19 15-20 24"/>
+        <path fill="none" d="M45 135c10 21 32 22 42 4c7-13-4-24-16-30"/>
+        <path d="M144 102c-19-7-44-4-52 13c-7 15 10 31 33 25"/>
+      </g>
+    </symbol>
+    <symbol id="paper" viewBox="0 0 200 200">
+      <g fill="url(#skin)" stroke="#391a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M55 169c-14-13-23-30-31-43C9 101 22 88 37 100l18 21L44 66c-5-23 16-31 23-9l12 39l-5-63c-2-22 21-24 25-2l8 62l8-63c3-22 26-18 24 3l-5 65l15-39c8-21 29-12 22 10l-13 47c-6 23-10 42-26 56c-20 18-58 15-77-3Z"/>
+        <path fill="none" stroke="#f4a68f" stroke-width="5" d="M57 121c16 0 27 7 30 22m30-18c-12 4-18 13-20 27"/>
+      </g>
+    </symbol>
+    <symbol id="unknown" viewBox="0 0 200 200">
+      <path d="M66 68c0-41 75-46 75-4c0 28-39 27-39 53" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+      <circle cx="102" cy="149" r="9" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><img src="assets/controller.svg" alt="" width="62" height="45">미니게임 아케이드</a>
+      <nav class="site-nav" aria-label="주 메뉴">
+      <a href="index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 11 12 2l10 9h-3v10h-5v-6h-4v6H5V11z"/></svg> 홈</a>
+      <a href="rps.html">가위바위보</a>
+      <a href="lotto.html">로또 번호 추첨기</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="stage" tabindex="-1">
+    <div class="scenery" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="console">
+    <div class="controls controls-left" aria-hidden="true">
+      <svg class="dpad" viewBox="0 0 100 100">
+        <path d="M36 4h28a5 5 0 0 1 5 5v22h22a5 5 0 0 1 5 5v28a5 5 0 0 1-5 5H69v22a5 5 0 0 1-5 5H36a5 5 0 0 1-5-5V69H9a5 5 0 0 1-5-5V36a5 5 0 0 1 5-5h22V9a5 5 0 0 1 5-5Z"/>
+        <circle cx="50" cy="21" r="6"/><circle cx="50" cy="79" r="6"/>
+        <circle cx="21" cy="50" r="6"/><circle cx="79" cy="50" r="6"/>
+      </svg>
+      <span class="speaker"></span>
+    </div>
+    <div class="controls controls-right" aria-hidden="true">
+      <div class="action-buttons"><i></i><i></i><i></i><i></i></div>
+      <span class="speaker"></span>
+    </div>
+      <div class="bezel">
+        <p class="marquee"><span aria-hidden="true">♥</span> MINI GAME ARCADE <span aria-hidden="true">♥</span></p>
+        <div class="screen">
+          <h1>오늘은 어떤 게임을 할까요?</h1>
+          <div class="game-cards">
+            <a class="game-card rps-card" href="rps.html" aria-labelledby="rps-name" aria-describedby="rps-description">
+              <div class="preview hands" aria-hidden="true">
+                <svg viewBox="0 0 30 44" class="rays"><path d="m22 14-7-10m2 20L4 15m11 21L2 32"/></svg>
+                <svg viewBox="0 0 200 200"><use href="#rock"/></svg>
+                <svg viewBox="0 0 200 200"><use href="#scissors"/></svg>
+                <svg viewBox="0 0 200 200"><use href="#paper"/></svg>
+              </div>
+              <h2 id="rps-name">가위바위보 게임</h2>
+              <p id="rps-description">컴퓨터와 가위바위보 대결!<br>승부를 겨뤄보세요!</p>
+              <span class="button"><span class="play-icon" aria-hidden="true"></span>게임 시작하기</span>
+            </a>
+            <a class="game-card lotto-card" href="lotto.html" aria-labelledby="lotto-name" aria-describedby="lotto-description">
+              <div class="preview sample-balls" aria-hidden="true">
+                <span>4</span><span>13</span><span>27</span><span>33</span><span>41</span><span>45</span>
+              </div>
+              <h2 id="lotto-name">로또 번호 추첨기</h2>
+              <p id="lotto-description">1~45 사이의 숫자 중<br>6개의 번호를 무작위로 추첨해요!</p>
+              <span class="button"><span class="play-icon" aria-hidden="true"></span>게임 시작하기</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+  </main>
+  <footer class="site-footer">미니게임 아케이드 <span aria-hidden="true">✦</span> MINI GAME ARCADE</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>로또 번호 추첨기 | 미니게임 아케이드</title>
+  <link rel="icon" type="image/svg+xml" href="assets/controller.svg">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/lotto.css">
+  <script src="js/lotto.js" defer></script>
+</head>
+<body class="page-lotto">
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><img src="assets/controller.svg" alt="" width="62" height="45">미니게임 아케이드</a>
+      <nav class="site-nav" aria-label="주 메뉴">
+      <a href="index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 11 12 2l10 9h-3v10h-5v-6h-4v6H5V11z"/></svg> 홈</a>
+      <a href="rps.html">가위바위보</a>
+      <a href="lotto.html" aria-current="page">로또 번호 추첨기</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="stage" tabindex="-1">
+    <div class="scenery" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="console">
+    <div class="controls controls-left" aria-hidden="true">
+      <svg class="dpad" viewBox="0 0 100 100">
+        <path d="M36 4h28a5 5 0 0 1 5 5v22h22a5 5 0 0 1 5 5v28a5 5 0 0 1-5 5H69v22a5 5 0 0 1-5 5H36a5 5 0 0 1-5-5V69H9a5 5 0 0 1-5-5V36a5 5 0 0 1 5-5h22V9a5 5 0 0 1 5-5Z"/>
+        <circle cx="50" cy="21" r="6"/><circle cx="50" cy="79" r="6"/>
+        <circle cx="21" cy="50" r="6"/><circle cx="79" cy="50" r="6"/>
+      </svg>
+      <span class="speaker"></span>
+    </div>
+    <div class="controls controls-right" aria-hidden="true">
+      <div class="action-buttons"><i></i><i></i><i></i><i></i></div>
+      <span class="speaker"></span>
+    </div>
+      <div class="bezel">
+        <p class="marquee"><span aria-hidden="true">♥</span> MINI GAME ARCADE <span aria-hidden="true">♥</span></p>
+        <div class="screen">
+          <h1>로또 번호 추첨기</h1>
+          <p class="instructions">추첨 버튼을 누르면 1~45 사이의 서로 다른 번호 6개가 나와요.</p>
+          <section class="lotto-panel" aria-label="번호 추첨">
+            <div class="tray">
+              <ol class="balls" role="list" aria-label="추첨 번호">
+                <li class="ball" aria-label="빈 공">–</li>
+                <li class="ball" aria-label="빈 공">–</li>
+                <li class="ball" aria-label="빈 공">–</li>
+                <li class="ball" aria-label="빈 공">–</li>
+                <li class="ball" aria-label="빈 공">–</li>
+                <li class="ball" aria-label="빈 공">–</li>
+              </ol>
+            </div>
+            <p id="draw-status" role="status">번호 추첨을 시작해 보세요.</p>
+            <button class="button" id="draw-button" type="button" autocomplete="off">
+              <span class="play-icon" aria-hidden="true"></span><span id="draw-label">번호 추첨하기</span>
+            </button>
+          </section>
+        </div>
+      </div>
+      <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+  </main>
+  <footer class="site-footer">미니게임 아케이드 <span aria-hidden="true">✦</span> MINI GAME ARCADE</footer>
+</body>
+</html>
